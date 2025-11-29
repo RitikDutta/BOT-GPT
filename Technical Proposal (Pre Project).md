@@ -1,5 +1,9 @@
 # Technical Proposal (Pre Project)
 
+## Note:
+    ``` The HLD, LLD, Architecture, KPI, Specs, and other documents will be created after the project(dev) is completed. 
+    ``` 
+
 #### project name: BOT-GPT
 
 #### project description: 
