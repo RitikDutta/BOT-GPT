@@ -40,4 +40,13 @@ Note: Although we the entire application runs on low cost(free till now) there a
     - Approx cost of text-embedding-3-small: 1$/62500pages
 
 ##### things we will do
-1. 
+1. tech stack
+    - frontend: html, css, js
+    - backend: python, flask
+    - LLM: gemini free tier
+    - framework: langchain
+    - embedding: openai
+    - deployment: google cloud run
+    - database: mysql, pinecone
+    - container: docker, docker hub
+    - version control: github
