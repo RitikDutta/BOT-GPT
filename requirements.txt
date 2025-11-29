@@ -1,7 +1,8 @@
-langchain
 python-dotenv
 PyMuPDF
-langchain-google-genai
+langchain-core
+langchain-community
+langgraph
 mysql-connector-python
 openai
 pinecone
@@ -9,3 +10,4 @@ pydantic
 requests
 gunicorn
 Flask
+os
