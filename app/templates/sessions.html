@@ -4,48 +4,19 @@
 <head>
     <meta charset="utf-8">
     <title>bot-gpt sessions</title>
-    <style>
-        body {
-            font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-            margin: 2rem;
-            background: #111;
-            color: #eee;
-        }
 
-        h1 {
-            margin-bottom: 1rem;
-        }
+    <!-- google sans flex variable font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Google+Sans+Flex:opsz,wght@6..144,1..1000&display=swap"
+        rel="stylesheet">
 
-        .sessions-list {
-            list-style: none;
-            padding: 0;
-        }
-
-        .session-item {
-            padding: 0.75rem 1rem;
-            margin-bottom: 0.5rem;
-            border-radius: 8px;
-            background: #1c1c1c;
-            border: 1px solid #333;
-        }
-
-        .session-id {
-            font-weight: 600;
-        }
-
-        .session-meta {
-            font-size: 0.85rem;
-            color: #aaa;
-        }
-
-        .empty {
-            color: #888;
-        }
-    </style>
+    <!-- external css -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
 </head>
 
-<body>
-    <h1>all sessions</h1>
+<body class="gsf">
+    <h1 class="page-title">all sessions</h1>
 
     {% if sessions and sessions|length > 0 %}
     <ul class="sessions-list">
@@ -62,7 +33,7 @@
         {% endfor %}
     </ul>
     {% else %}
-    <p class="empty">no sessions yet. start chatting with the api to create one.</p>
+    <p class="empty-msg">no sessions yet. start chatting first.</p>
     {% endif %}
 </body>
 
