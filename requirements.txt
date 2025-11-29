@@ -1,1 +1,11 @@
- 
+langchain
+python-dotenv
+PyMuPDF
+langchain-google-genai
+mysql-connector-python
+openai
+pinecone
+pydantic
+requests
+gunicorn
+Flask
