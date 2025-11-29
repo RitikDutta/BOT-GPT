@@ -44,8 +44,8 @@ def get_session_history(session_id: str) -> InMemoryChatMessageHistory:
 chain_with_history = RunnableWithMessageHistory(
     base_chain, 
     get_session_history=get_session_history,
-    input_message_key="input",
-    history_message_key="history",
+    input_messages_key="input",
+    history_messages_key="history",
 )
 
 def ask_bot(session_id: str, user_input: str):
