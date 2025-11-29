@@ -1,0 +1,62 @@
+.gsf {
+    font-family: "Google Sans Flex", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: normal;
+    font-variation-settings:
+        "slnt" 0,
+        "wdth" 100,
+        "GRAD" 0,
+        "ROND" 0;
+}
+
+/* page layout */
+body.gsf {
+    margin: 2rem;
+    background: #111;
+    color: #eee;
+}
+
+/* title */
+.page-title {
+    font-size: 2rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+}
+
+/* sessions list */
+.sessions-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.session-item {
+    padding: 0.9rem 1.2rem;
+    margin-bottom: 0.6rem;
+    border-radius: 10px;
+    background: #1c1c1c;
+    border: 1px solid #333;
+    transition: 0.2s ease;
+}
+
+/* subtle hover */
+.session-item:hover {
+    background: #222;
+    border-color: #444;
+}
+
+.session-id {
+    font-size: 1.1rem;
+    font-weight: 600;
+}
+
+.session-meta {
+    font-size: 0.85rem;
+    opacity: 0.7;
+}
+
+.empty-msg {
+    color: #888;
+    font-size: 0.9rem;
+}
