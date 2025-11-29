@@ -1,15 +1,21 @@
-from flask import Flask, request, jsonify
+from flask import Flask, request, jsonify, render_template
 from .chat_flow import ask_bot
+from .database.relational import init_db, list_sessions
 
 def create_app():
     """ creates the flask application """
     
     app = Flask(__name__)
+
+    init_db()
     
     @app.route("/chat", methods=["POST"])
     def chat():
-        """ handles the chat endpoint """
-        
+        """
+        simple api endpoint:
+        expects: { "message": "...", "session_id": "optional" }
+        returns: { "session_id": "...", "reply": "..." }
+        """        
         data = request.get_json(force=True) or {}
         user_input = data.get("message", "").strip()
 
@@ -20,5 +26,11 @@ def create_app():
         reply = ask_bot(session_id=session_id, user_input=user_input)
 
         return jsonify({"session_id": session_id, "reply": reply})
+
+    @app.route("/")
+    @app.route("/sessions")
+    def sessions_page():
+        sessions = list_sessions()
+        return render_template("sessions.html", sessions=sessions)
 
     return app
