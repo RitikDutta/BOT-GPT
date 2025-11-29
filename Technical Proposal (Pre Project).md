@@ -47,7 +47,7 @@ Note: Although we the entire application runs on low cost(free till now) there a
     - frontend: html, css, js
     - backend: python, flask
     - LLM: gemini free tier
-    - framework: langchain
+    - framework: langchain or simple python wrapper
     - embedding: openai
     - deployment: google cloud run
     - database: mysql, pinecone
