@@ -1,5 +1,8 @@
 # 🧠 BOT-GPT — Conversational AI + RAG Prototype
 
+### note (important)
+- rename the .env_sample to .env and add gemini and openai key to test that on local system
+
 A lightweight prototype of a **conversational AI assistant** built using:
 
 - **Flask** (backend + routes + UI)
