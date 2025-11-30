@@ -1,5 +1,5 @@
 from flask import Flask, request, jsonify, render_template, redirect, url_for
-from .chat_flow import ask_bot
+from .chat_flow import ask_bot, sync_history_from_db, clear_history
 from .database.relational import init_db, list_sessions, get_messages, delete_session, delete_from_message, add_session
 import time
 
@@ -43,6 +43,7 @@ def create_app():
     @app.route("/sessions/<session_id>/delete", methods=["POST"])
     def delete_session_route(session_id):
         delete_session(session_id)
+        clear_history(session_id)
         return redirect(url_for("sessions_page"))
     
     @app.route("/sessions/<session_id>/cut/<int:message_id>", methods=["POST"])
@@ -51,6 +52,7 @@ def create_app():
         delete a message and all messages after it for that session
         """
         delete_from_message(session_id, message_id)
+        sync_history_from_db(session_id) # sync messages again (rebuilt)
         return redirect(url_for("messages_page", session_id=session_id))
 
     @app.route("/sessions/create", methods=["POST"])
