@@ -8,6 +8,7 @@ from langchain_core.chat_history import InMemoryChatMessageHistory
 from langchain_core.runnables.history import RunnableWithMessageHistory
 
 from .config import GENAI_MODEL, GOOGLE_API_KEY
+from .database.relational import add_message
 
 # set API key for Google GenAI client (auto set by env var, but just to be sure [not to be dont on production])
 if GOOGLE_API_KEY:
@@ -49,13 +50,12 @@ chain_with_history = RunnableWithMessageHistory(
 )
 
 def ask_bot(session_id: str, user_input: str):
-    """ handles the chat endpoint """
+    """ handles the chat endpoint with db"""
+    add_message(session_id=session_id, role="user", content=user_input)
+
     config = {"configurable": {"session_id": session_id}}
+    response = chain_with_history.invoke({"input": user_input}, config=config)
+    reply_text = response.content
+    add_message(session_id=session_id, role="assistant", content=reply_text)
 
-    response = chain_with_history.invoke(
-        {"input": user_input},
-        config=config,
-    )
-
-    # response is an AIMessage
-    return response.content
+    return reply_text
