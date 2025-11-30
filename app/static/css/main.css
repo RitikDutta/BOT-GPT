@@ -119,3 +119,39 @@ body.gsf {
 .btn-primary:hover {
     filter: brightness(1.2);
 }
+
+
+/* new message box at bottom */
+.new-message-box {
+    margin-top: 1.5rem;
+    padding-top: 1rem;
+    border-top: 1px solid #333;
+}
+
+/* textarea style */
+.new-message-input {
+    width: 100%;
+    background: #151515;
+    color: #eee;
+    border-radius: 8px;
+}
+
+.new-message-input:focus {
+    border-color: #4a90e2;
+}
+
+/* send button */
+.new-message-actions {
+    text-align: right;
+}
+
+/* send button look */
+.send-btn {
+    background: #1f3b70;
+    border-color: #4168c5;
+    color: #dbe7ff;
+}
+
+.send-btn:hover {
+    filter: brightness(1.15);
+}

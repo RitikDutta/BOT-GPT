@@ -60,6 +60,21 @@
     <p class="empty-msg">no messages in this session yet.</p>
     {% endif %}
 
+    <!-- message textbox -->
+    <div class="new-message-box">
+        <form method="post" action="{{ url_for('send_message_view', session_id=session_id) }}">
+            <textarea name="message" class="new-message-input" rows="3"
+                placeholder="type a message and press send..."></textarea>
+
+            <div class="new-message-actions">
+                <button type="submit" class="btn send-btn">
+                    send
+                </button>
+            </div>
+        </form>
+    </div>
+
+
 </body>
 
 </html>
