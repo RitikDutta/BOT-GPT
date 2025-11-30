@@ -103,3 +103,19 @@ body.gsf {
     border-color: #888;
     background: #202020;
 }
+
+/* top actions bar */
+.top-actions {
+    margin-bottom: 1.2rem;
+}
+
+/* new session button */
+.btn-primary {
+    background: #12345a;
+    border-color: #2b6fa3;
+    color: #cde8ff;
+}
+
+.btn-primary:hover {
+    filter: brightness(1.2);
+}

@@ -17,6 +17,11 @@
 
 <body class="gsf">
     <h1 class="page-title">all sessions</h1>
+    <div class="top-actions">
+        <form method="post" action="{{ url_for('create_session') }}">
+            <button type="submit" class="btn btn-primary">+ new session</button>
+        </form>
+    </div>
 
     {% if sessions and sessions|length > 0 %}
     <ul class="sessions-list">
