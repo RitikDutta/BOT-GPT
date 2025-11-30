@@ -49,6 +49,8 @@ body.gsf {
 .session-id {
     font-size: 1.1rem;
     font-weight: 600;
+    text-decoration: none;
+    color: #d4bbbb;
 }
 
 .session-meta {
