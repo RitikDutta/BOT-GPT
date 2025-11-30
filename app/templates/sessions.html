@@ -25,10 +25,12 @@
         {% set session_id = row[1] %}
         {% set created_at = row[2] %}
         <li class="session-item">
-            <div class="session-id">{{ session_id }}</div>
-            <div class="session-meta">
-                internal id: {{ id }} • created: {{ created_at }}
-            </div>
+            <a class="session-link" href="{{ url_for('messages_page', session_id=session_id) }}">
+                <div class="session-id">{{ session_id }}</div>
+                <div class="session-meta">
+                    internal id: {{ id }} • created: {{ created_at }}
+                </div>
+            </a>
         </li>
         {% endfor %}
     </ul>

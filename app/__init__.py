@@ -1,6 +1,6 @@
 from flask import Flask, request, jsonify, render_template
 from .chat_flow import ask_bot
-from .database.relational import init_db, list_sessions
+from .database.relational import init_db, list_sessions, get_messages
 
 def create_app():
     """ creates the flask application """
@@ -33,4 +33,10 @@ def create_app():
         sessions = list_sessions()
         return render_template("sessions.html", sessions=sessions)
 
+    @app.route("/sessions/<session_id>")
+    def messages_page(session_id):
+        # show all messages inside one session
+        msgs = get_messages(session_id)
+        return render_template("messages.html", session_id=session_id, messages=msgs)
+    
     return app
