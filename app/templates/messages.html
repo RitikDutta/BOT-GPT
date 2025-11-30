@@ -60,6 +60,21 @@
     <p class="empty-msg">no messages in this session yet.</p>
     {% endif %}
 
+    <!-- pdf upload box -->
+    <div class="upload-box">
+        <form method="post" action="{{ url_for('upload_pdf_view', session_id=session_id) }}"
+            enctype="multipart/form-data">
+            <input type="file" name="file" accept="application/pdf,.pdf" class="upload-input">
+            <button type="submit" class="btn upload-btn">
+                upload pdf to vector db
+            </button>
+        </form>
+    </div>
+
+    <div class="new-message-box">
+        <!-- existing send form -->
+    </div>
+
     <!-- message textbox -->
     <div class="new-message-box">
         <form method="post" action="{{ url_for('send_message_view', session_id=session_id) }}">

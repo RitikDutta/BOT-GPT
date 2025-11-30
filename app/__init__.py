@@ -1,7 +1,10 @@
 from flask import Flask, request, jsonify, render_template, redirect, url_for
 from .chat_flow import ask_bot, sync_history_from_db, clear_history
 from .database.relational import init_db, list_sessions, get_messages, delete_session, delete_from_message, add_session
+from .database.vector_store import store_document_for_session, delete_vectors_for_session
+from .utils.pdf_utils import extract_text_from_pdf
 import time
+import os
 
 def create_app():
     """ creates the flask application """
@@ -74,6 +77,36 @@ def create_app():
             return redirect(url_for("messages_page", session_id=session_id))
 
         ask_bot(session_id=session_id, user_input=user_text)
+        return redirect(url_for("messages_page", session_id=session_id))
+
+    @app.route("/sessions/<session_id>/upload", methods=["POST"])
+    def upload_pdf_view(session_id):
+        """
+        handle pdf upload:
+        - validate file
+        - extract text
+        - store in pinecone with this session_id
+        """
+        file = request.files.get("file")
+        if not file or file.filename == "":
+            # nothing selected
+            return redirect(url_for("messages_page", session_id=session_id))
+
+        filename = file.filename.lower()
+        if not filename.endswith(".pdf"):
+            # only pdf allowed for now
+            print("[WARN] non-pdf file skipped:", filename)
+            return redirect(url_for("messages_page", session_id=session_id))
+
+        # extract text
+        text = extract_text_from_pdf(file)
+        if not text.strip():
+            print("[WARN] no text extracted from pdf")
+            return redirect(url_for("messages_page", session_id=session_id))
+
+        # send to vector store
+        store_document_for_session(session_id=session_id, raw_text=text)
+
         return redirect(url_for("messages_page", session_id=session_id))
 
     return app

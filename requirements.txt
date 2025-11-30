@@ -10,4 +10,6 @@ pydantic
 requests
 gunicorn
 Flask
-os
+PyPDF2
+pinecone[grpc]
+pandas
