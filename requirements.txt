@@ -13,3 +13,5 @@ Flask
 PyPDF2
 pinecone[grpc]
 pandas
+langchain
+langchain-google-genai
