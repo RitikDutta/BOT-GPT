@@ -18,6 +18,11 @@
 
     <div class="top-bar">
         <a href="{{ url_for('sessions_page') }}" class="back-link">← all sessions</a>
+        <form method="post" action="{{ url_for('delete_session_route', session_id=session_id) }}" class="inline-form">
+            <button type="submit" class="btn btn-danger">
+                delete session
+            </button>
+        </form>
     </div>
 
     <h1 class="page-title">session: {{ session_id }}</h1>
@@ -38,6 +43,15 @@
             </div>
             <div class="message-content">
                 {{ content }}
+            </div>
+            <div class="message-actions">
+                <form method="post"
+                    action="{{ url_for('cut_from_message_view', session_id=session_id, message_id=msg_id) }}"
+                    class="inline-form">
+                    <button type="submit" class="cut-btn">
+                        cut from this message
+                    </button>
+                </form>
             </div>
         </div>
         {% endfor %}
