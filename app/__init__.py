@@ -1,3 +1,6 @@
+from dotenv import load_dotenv
+load_dotenv()
+
 from flask import Flask, request, jsonify, render_template, redirect, url_for
 from .chat_flow import ask_bot, sync_history_from_db, clear_history
 from .database.relational import init_db, list_sessions, get_messages, delete_session, delete_from_message, add_session
