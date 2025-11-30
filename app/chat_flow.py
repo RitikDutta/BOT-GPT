@@ -78,8 +78,6 @@ chain_with_history = RunnableWithMessageHistory(
 
 def ask_bot(session_id: str, user_input: str):
     """ handles the chat endpoint with db"""
-    sync_history_from_db(session_id)
-
     add_message(session_id=session_id, role="user", content=user_input)
 
     config = {"configurable": {"session_id": session_id}}
