@@ -1,6 +1,7 @@
 from flask import Flask, request, jsonify, render_template, redirect, url_for
 from .chat_flow import ask_bot
-from .database.relational import init_db, list_sessions, get_messages, delete_session, delete_from_message
+from .database.relational import init_db, list_sessions, get_messages, delete_session, delete_from_message, add_session
+import time
 
 def create_app():
     """ creates the flask application """
@@ -51,5 +52,14 @@ def create_app():
         """
         delete_from_message(session_id, message_id)
         return redirect(url_for("messages_page", session_id=session_id))
-    
+
+    @app.route("/sessions/create", methods=["POST"])
+    def create_session():
+        """
+        create a new session
+        """
+        session_id = f"sess_{int(time.time())}"   # simple unique id
+        add_session(session_id)
+        return redirect(url_for("messages_page", session_id=session_id))
+
     return app
