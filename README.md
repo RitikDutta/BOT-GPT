@@ -2,6 +2,7 @@
 
 ### note (important)
 - rename the .env_sample to .env and add gemini and openai key to test that on local system
+- add the gemnini(to test the conversational ai) and opeai(for testing word embeddings RAG) key for testing 
 
 A lightweight prototype of a **conversational AI assistant** built using:
 
