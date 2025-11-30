@@ -62,4 +62,16 @@ def create_app():
         add_session(session_id)
         return redirect(url_for("messages_page", session_id=session_id))
 
+    @app.route("/sessions/<session_id>/send", methods=["POST"])
+    def send_message_view(session_id):
+        """
+        send a message to the bot
+        """
+        user_text = request.form.get("message", "").strip()
+        if not user_text:
+            return redirect(url_for("messages_page", session_id=session_id))
+
+        ask_bot(session_id=session_id, user_input=user_text)
+        return redirect(url_for("messages_page", session_id=session_id))
+
     return app
