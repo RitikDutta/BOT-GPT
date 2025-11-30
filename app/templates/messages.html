@@ -75,6 +75,33 @@
     </div>
 
 
+    <script>
+        // focus textbox
+        const inputBox = document.querySelector(".new-message-input");
+        if (inputBox) {
+            inputBox.focus();
+        }
+
+        // enter key is send
+        const form = document.querySelector(".new-message-box form");
+
+        if (inputBox && form) {
+            inputBox.addEventListener("keydown", function (e) {
+                // shift + enter = newline
+                if (e.key === "Enter" && e.shiftKey) {
+                    return;
+                }
+
+                // enter = submit form
+                if (e.key === "Enter") {
+                    e.preventDefault();
+                    form.submit();
+                }
+            });
+        }
+    </script>
+
+
 </body>
 
 </html>
